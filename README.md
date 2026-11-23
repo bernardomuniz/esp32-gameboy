@@ -5,21 +5,43 @@
 ## Sobre
 Este repositório é dedidacado para a documentação do trabalho desenvolvido durante a disicipina de Projeto Integrador II.
 
-## Recursos
 
-- **Emulação Multi-sistema:** Suporte para NES, Game Boy, Game Boy Color, Game Gear, Master System, MSX e mais através do Retro-Go.
-- **Interface Digital Simplificada:** 9 botões com sinal ativo em nível baixo (`LOW`) e *pull-up* interno ativo.
-- **Fácil Montagem:** Referência única de GND para todos os botões tácteis (Common Ground Rail).
-- **Sem Resistores Externos:** Aproveita a infraestrutura de hardware do próprio ESP32-S3.
+## Conexões entre GPIOs 
 
----
+### **1\. Conexões do Display (ILI9341 SPI) com a ESP32-S3**
 
-## Componentes de Hardware
+| **Pino Display**  | **Pino ESP32-S3 GPIO** |
+| --------------- | --------------------- |
+| **VCC**         | **3.3V**              |
+| **GND**         | **GND**               |                                           
+| **MOSI / SDA**  | **GPIO 12**           |               
+| **SCK / SCLK**  | **GPIO 48**           |
+| **DC / RS**     | **GPIO 47**           |                                       
+| **RST / RESET** | **GPIO 3**            |
+| **LED / BL**    | **GPIO 39**           |
+| **CS**          | **GND**               |
 
-| Componente | Especificação / Modelo |
-| :--- | :--- |
-| **Microcontrolador** | YD-ESP32-S3 (Dual-Core LX7, 44 Pinos / 22+22) |
-| **Display** | TFT LCD ILI9341 (320x240 pixels, Interface SPI) |
-| **Controles** | 9x Push Buttons (Chaves tácteis de 4 pinos) |
-| **Protoboard / PCB** | Protoboard com canal central ou Perfboard universal |
-| **Alimentação** | Cabo USB-C / Fonte de alimentação 5V |
+###
+
+### **2\. Conexões do MicroSD Card com a com a ESP32-S3**
+
+| **Pino SD Card**  | **Pino ESP32-S3 GPIO** | 
+| ---------------- | --------------------- | 
+| **SD_CS**        | **GPIO 10**           | 
+| **SD_MOSI**      | **GPIO 11**           | 
+| **SD_SCK / CLK** | **GPIO 13**           | 
+| **SD_MISO**      | **GPIO 9**            |
+
+### **3\. Conexão dos menus de Ação e Menu**
+
+
+| **Nome do botão**| **Função**        | **Pino ESP32-S3 GPIO** | **Outra perna** |
+| --------------- | ------------------ | --------------------- | ------------- |
+| **Botão A**     | Confirmar / Ação A | **GPIO 15**           | **GND**       |
+| **Botão B**     | Voltar/ AÇÃO B     | **GPIO 5**            | **GND**       |
+| **Select**      | Selecionar         | **GPIO 16**           | **GND**       |
+| **Start**       | Começar            | **GPIO 17**           | **GND**       |
+| **Menu**        | Acessar menu do Reto-GO      | **GPIO 8**  | **GND**       |
+
+
+##
